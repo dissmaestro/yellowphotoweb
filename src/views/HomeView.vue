@@ -10,12 +10,12 @@ const featured = priceList.filter((p) =>
 )
 
 const gallery = [
-  { seed: 'magicportrait', tall: true, label: 'Ретушь портрета' },
-  { seed: 'magicfamily', tall: false, label: 'Цветокоррекция' },
-  { seed: 'magicwedding', tall: false, label: 'Художественная обработка' },
-  { seed: 'magickids', tall: true, label: 'Улучшение качества' },
-  { seed: 'magiccanvas', tall: false, label: 'Реставрация фото' },
-  { seed: 'magicstudio', tall: false, label: 'До и после' },
+  { img: 'gallery-portrait.jpg', tall: true, label: 'Ретушь портрета' },
+  { img: 'gallery-color.jpg', tall: false, label: 'Цветокоррекция' },
+  { img: 'gallery-art.jpg', tall: false, label: 'Художественная обработка' },
+  { img: 'gallery-quality.jpg', tall: true, label: 'Улучшение качества' },
+  { img: 'gallery-restore.jpg', tall: false, label: 'Реставрация фото' },
+  { img: 'gallery-before-after.jpg', tall: false, label: 'До и после' },
 ]
 
 const stats = [
@@ -59,10 +59,10 @@ const stats = [
 
       <div class="hero-art">
         <div class="art-frame art-frame--main">
-          <img src="https://picsum.photos/seed/magichero/640/800" alt="Пример работы студии" loading="eager" />
+          <img src="/images/hero-main.jpg" alt="Пример работы студии" loading="eager" />
         </div>
         <div class="art-frame art-frame--small">
-          <img src="https://picsum.photos/seed/magichero2/360/360" alt="Пример работы студии" loading="lazy" />
+          <img src="/images/hero-small.jpg" alt="Пример работы студии" loading="lazy" />
         </div>
         <div class="art-badge">
           <strong>от 450 ₽</strong>
@@ -117,11 +117,11 @@ const stats = [
       <div class="gallery">
         <figure
           v-for="g in gallery"
-          :key="g.seed"
+          :key="g.img"
           class="gallery-item"
           :class="{ tall: g.tall }"
         >
-          <img :src="`https://picsum.photos/seed/${g.seed}/600/750`" :alt="g.label" loading="lazy" />
+          <img :src="`/images/${g.img}`" :alt="g.label" loading="lazy" />
           <figcaption>{{ g.label }}</figcaption>
         </figure>
       </div>

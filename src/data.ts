@@ -72,15 +72,12 @@ export const services: Service[] = [
 
 export const contacts = {
   studioName: 'Студия обработки фотографий MAGIC photo',
-  phone: '+7 (473) 000-00-00',
-  phoneHref: 'tel:+74730000000',
-  email: 'magicvrn.ru@magicvrn.ru',
-  emailHref: 'mailto:magicvrn.ru@magicvrn.ru',
-  site: 'www.magicvrn.ru',
-  siteHref: 'https://www.magicvrn.ru',
+  ip: 'ИП Корчагина Наталья Николаевна',
+  site: 'мэджикфото.рф',
+  siteHref: 'https://мэджикфото.рф',
   address: 'г. Воронеж, ул. Суворова, 122а',
   hours: 'Ежедневно, 9:00 — 18:00',
   city: 'Воронеж',
   since: 2015,
-  inn: 'ИНН 0000000000',
+  inn: 'ИНН 361605610754',
 }

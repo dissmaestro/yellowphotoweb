@@ -12,6 +12,6 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    allowedHosts: ['all', 'lesson-delivering-these-specialist.trycloudflare.com'],  
+    allowedHosts: ['all', 'oak-psp-collaboration-formal.trycloudflare.com'],  
   },
 })

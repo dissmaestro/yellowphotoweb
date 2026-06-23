@@ -29,8 +29,6 @@ const year = new Date().getFullYear()
 
       <div class="ftr-col">
         <h4>Контакты</h4>
-        <a :href="contacts.phoneHref">{{ contacts.phone }}</a>
-        <a :href="contacts.emailHref">{{ contacts.email }}</a>
         <span>{{ contacts.address }}</span>
         <span>{{ contacts.hours }}</span>
       </div>

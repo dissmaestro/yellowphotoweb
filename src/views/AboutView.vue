@@ -37,7 +37,7 @@ const reasons = [
   <section class="section section--top">
     <div class="container story">
       <div class="story-art">
-        <img src="https://picsum.photos/seed/magicabout/720/560" alt="Пример обработки фотографии" loading="lazy" />
+        <img src="/images/about-process.jpg" alt="Пример обработки фотографии" loading="lazy" />
       </div>
       <div class="story-text">
         <span class="eyebrow">Наша история</span>
@@ -99,7 +99,7 @@ const reasons = [
   <section class="section founder-section">
     <div class="container founder">
       <figure class="founder-photo">
-        <img src="https://picsum.photos/seed/magicmaster/520/600" alt="Мастер студии MAGIC photo" loading="lazy" />
+        <img src="/images/master.jpg" alt="Мастер студии MAGIC photo" loading="lazy" />
       </figure>
       <div class="founder-text">
         <span class="eyebrow">Кто делает магию</span>
@@ -114,9 +114,9 @@ const reasons = [
           Ретушёр и основатель студии MAGIC photo
         </p>
         <div class="founder-actions">
-          <a :href="contacts.phoneHref">
-            <Button label="Связаться со мной" icon="pi pi-phone" />
-          </a>
+          <RouterLink to="/prices">
+            <Button label="Связаться со мной" icon="pi pi-send" />
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -132,20 +132,6 @@ const reasons = [
       </div>
 
       <div class="contact-cards">
-        <a :href="contacts.phoneHref" class="c-card">
-          <i class="pi pi-phone" />
-          <div>
-            <span>Телефон</span>
-            <strong>{{ contacts.phone }}</strong>
-          </div>
-        </a>
-        <a :href="contacts.emailHref" class="c-card">
-          <i class="pi pi-envelope" />
-          <div>
-            <span>E-mail</span>
-            <strong>{{ contacts.email }}</strong>
-          </div>
-        </a>
         <div class="c-card">
           <i class="pi pi-map-marker" />
           <div>

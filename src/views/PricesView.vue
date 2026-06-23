@@ -7,7 +7,7 @@ import Checkbox from 'primevue/checkbox'
 import Select from 'primevue/select'
 import Button from 'primevue/button'
 import Message from 'primevue/message'
-import { priceList, contacts, type PriceItem } from '@/data'
+import { priceList, type PriceItem } from '@/data'
 import ConsentDialog from '@/components/ConsentDialog.vue'
 
 const ruble = new Intl.NumberFormat('ru-RU')
@@ -156,11 +156,6 @@ function categoryIcon(item: PriceItem) {
           <li><i class="pi pi-check-circle" /> Поможем выбрать формат и оформление</li>
           <li><i class="pi pi-check-circle" /> Готовый заказ — обычно за 24 часа</li>
         </ul>
-
-        <div class="order-contact">
-          <a :href="contacts.phoneHref"><i class="pi pi-phone" /> {{ contacts.phone }}</a>
-          <a :href="contacts.emailHref"><i class="pi pi-envelope" /> {{ contacts.email }}</a>
-        </div>
       </div>
 
       <form class="order-form" novalidate @submit.prevent="submit">
@@ -388,21 +383,6 @@ function categoryIcon(item: PriceItem) {
 .order-perks i {
   color: var(--gold-deep);
 }
-.order-contact {
-  display: grid;
-  gap: 10px;
-}
-.order-contact a {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-weight: 600;
-  color: var(--ink);
-}
-.order-contact i {
-  color: var(--gold-deep);
-}
-
 .order-form {
   background: #fff;
   border: 1px solid var(--line);

@@ -7,8 +7,9 @@ import Checkbox from 'primevue/checkbox'
 import Select from 'primevue/select'
 import Button from 'primevue/button'
 import Message from 'primevue/message'
-import { priceList, type PriceItem } from '@/data'
+import { priceList, contacts, type PriceItem } from '@/data'
 import ConsentDialog from '@/components/ConsentDialog.vue'
+import OfferDialog from '@/components/OfferDialog.vue'
 
 const ruble = new Intl.NumberFormat('ru-RU')
 const toast = useToast()
@@ -33,6 +34,7 @@ interface FormState {
   product: string | null
   message: string
   consent: boolean
+  offer: boolean
 }
 
 const form = reactive<FormState>({
@@ -42,19 +44,22 @@ const form = reactive<FormState>({
   product: null,
   message: '',
   consent: false,
+  offer: false,
 })
 
 const submitted = ref(false)
 const consentVisible = ref(false)
+const offerVisible = ref(false)
 
 const errors = computed(() => ({
   name: submitted.value && form.name.trim().length < 2,
   phone: submitted.value && !/[\d]{6,}/.test(form.phone.replace(/\D/g, '')),
   consent: submitted.value && !form.consent,
+  offer: submitted.value && !form.offer,
 }))
 
 const isValid = computed(
-  () => !errors.value.name && !errors.value.phone && form.consent,
+  () => !errors.value.name && !errors.value.phone && form.consent && form.offer,
 )
 
 function submit() {
@@ -65,6 +70,14 @@ function submit() {
         severity: 'warn',
         summary: 'Нужно согласие',
         detail: 'Для отправки заявки подтвердите согласие на обработку персональных данных.',
+        life: 4000,
+      })
+    }
+    if (!form.offer) {
+      toast.add({
+        severity: 'warn',
+        summary: 'Нужно согласие с офертой',
+        detail: 'Для оформления заказа подтвердите согласие с условиями оферты.',
         life: 4000,
       })
     }
@@ -84,6 +97,7 @@ function submit() {
   form.product = null
   form.message = ''
   form.consent = false
+  form.offer = false
   submitted.value = false
 }
 
@@ -154,7 +168,7 @@ function categoryIcon(item: PriceItem) {
         <ul class="order-perks">
           <li><i class="pi pi-check-circle" /> Ответим в течение часа в рабочее время</li>
           <li><i class="pi pi-check-circle" /> Поможем выбрать формат и оформление</li>
-          <li><i class="pi pi-check-circle" /> Готовый заказ — обычно за 24 часа</li>
+          <li><i class="pi pi-check-circle" /> Срок выполнения заказа — 10 дней + доставка</li>
         </ul>
       </div>
 
@@ -229,6 +243,24 @@ function categoryIcon(item: PriceItem) {
           Без согласия на обработку персональных данных заявку отправить нельзя.
         </Message>
 
+        <!-- OFFER — обязательное согласие с офертой -->
+        <div class="consent-field" :class="{ 'consent-error': errors.offer }">
+          <Checkbox v-model="form.offer" :binary="true" inputId="offer" />
+          <label for="offer">
+            Я ознакомлен(а) и согласен(на) с условиями
+            <button type="button" class="consent-link" @click="offerVisible = true">
+              публичной оферты
+            </button>.
+          </label>
+        </div>
+        <Message v-if="errors.offer" severity="error" :closable="false" size="small">
+          Без согласия с офертой оформить заказ нельзя.
+        </Message>
+
+        <p class="term-note">
+          <i class="pi pi-clock" /> Срок выполнения заказа — {{ contacts.orderTerm }}.
+        </p>
+
         <Button
           type="submit"
           label="Отправить заявку"
@@ -244,6 +276,7 @@ function categoryIcon(item: PriceItem) {
     </div>
 
     <ConsentDialog v-model:visible="consentVisible" @accept="form.consent = true" />
+    <OfferDialog v-model:visible="offerVisible" @accept="form.offer = true" />
   </section>
   </div>
 </template>
@@ -442,6 +475,18 @@ function categoryIcon(item: PriceItem) {
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+}
+.term-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.term-note i {
+  color: var(--gold-deep);
 }
 .submit-btn {
   margin-top: 6px;

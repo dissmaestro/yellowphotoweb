@@ -7,7 +7,7 @@ const steps = [
   { n: '01', title: 'Заявка', text: 'Вы оставляете заявку и присылаете фото — на флешке, в облаке или прямо с телефона.' },
   { n: '02', title: 'Обработка', text: 'Делаю цветокоррекцию и ретушь, согласую результат с вами до печати.' },
   { n: '03', title: 'Изготовление', text: 'Печатаю на профессиональном оборудовании, собираю фотокниги и сувениры.' },
-  { n: '04', title: 'Готово', text: 'Получаете готовые файлы или отпечатки — обычно уже через 24 часа.' },
+  { n: '04', title: 'Готово', text: 'Получаете готовые файлы или отпечатки — срок выполнения 10 дней + доставка.' },
 ]
 
 const reasons = [
@@ -133,10 +133,12 @@ const reasons = [
 
       <div class="contact-cards">
         <div class="c-card">
-          <i class="pi pi-map-marker" />
+          <i class="pi pi-id-card" />
           <div>
-            <span>Адрес</span>
-            <strong>{{ contacts.address }}</strong>
+            <span>Реквизиты</span>
+            <strong>{{ contacts.ip }}</strong>
+            <strong>{{ contacts.inn }}</strong>
+            <strong>{{ contacts.ogrnip }}</strong>
           </div>
         </div>
         <div class="c-card">
@@ -353,6 +355,7 @@ a.c-card:hover {
   color: var(--ink-soft);
 }
 .c-card strong {
+  display: block;
   font-size: 1.02rem;
 }
 

@@ -21,7 +21,7 @@ const gallery = [
 const stats = [
   { value: '2015', suffix: '', label: 'работаем с этого года' },
   { value: '40 000+', suffix: '', label: 'обработанных кадров' },
-  { value: '24', suffix: 'ч', label: 'средний срок заказа' },
+  { value: '10', suffix: 'дн', label: 'срок заказа + доставка' },
   { value: '4.9', suffix: '★', label: 'средняя оценка' },
 ]
 </script>

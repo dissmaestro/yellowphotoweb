@@ -29,13 +29,13 @@ const year = new Date().getFullYear()
 
       <div class="ftr-col">
         <h4>Контакты</h4>
-        <span>{{ contacts.address }}</span>
+        <span>{{ contacts.ip }}</span>
         <span>{{ contacts.hours }}</span>
       </div>
     </div>
 
     <div class="container ftr-bottom">
-      <span>© {{ year }} {{ contacts.studioName }}. {{ contacts.inn }}</span>
+      <span>© {{ year }} {{ contacts.studioName }}. {{ contacts.ip }}, {{ contacts.inn }}, {{ contacts.ogrnip }}</span>
       <button class="link-btn" @click="consentVisible = true">
         Согласие на обработку персональных данных
       </button>
